@@ -68,4 +68,29 @@ public class NumberValidator<N extends Number & Comparable<N>> extends ValueVali
         return this;
     }
 
+
+    public NumberValidator<N> multipleOf(long number) {
+        if (value == null) {
+            return this;
+        }
+        if (!isIntegralNumber()) {
+            throw new ValidationException(valueName, "must be an integral number");
+        }
+        if (number == 0) {
+            throw new ValidationException(valueName, "cannot be divisible by 0");
+        }
+
+        long v = value.longValue();
+        if (v % number != 0) {
+            throw new ValidationException(valueName, "must be multiple of " + number);
+        }
+        return this;
+    }
+
+    private boolean isIntegralNumber() {
+        return value instanceof Integer
+            || value instanceof Long
+            || value instanceof Byte
+            || value instanceof Short;
+    }
 }
