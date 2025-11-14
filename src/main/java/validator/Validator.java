@@ -1,18 +1,18 @@
-package main.java.validator;
+package validator;
 
-import main.java.validator.value.NumberValidator;
-import main.java.validator.value.StringValidator;
-import main.java.validator.value.ValueValidator;
+import validator.value.NumberValidator;
+import validator.value.StringValidator;
+import validator.value.ValueValidator;
 
 public class Validator {
 
     private Validator() {}
 
-    public static ValueValidator<String> value(String valueName, String value) {
+    public static StringValidator value(String valueName, String value) {
         return new StringValidator(valueName, value);
     }
 
-    public static <N extends Number & Comparable<N>> ValueValidator<N> value(String valueName, N value) {
+    public static <N extends Number & Comparable<N>> NumberValidator<N> value(String valueName, N value) {
         return new NumberValidator<>(valueName, value);
     }
 

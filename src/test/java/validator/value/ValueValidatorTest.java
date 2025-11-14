@@ -1,4 +1,4 @@
-package test.validator.value;
+package validator.value;
 
 public class ValueValidatorTest {
 }

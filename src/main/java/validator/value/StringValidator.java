@@ -1,4 +1,4 @@
-package main.java.validator.value;
+package validator.value;
 
 import main.java.exception.ValidationException;
 
