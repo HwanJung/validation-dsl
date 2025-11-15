@@ -50,6 +50,20 @@ public class NumberValidatorTest {
         );
     }
 
+    @DisplayName("인자가 null이라면 예외가 발생한다.")
+    @Test
+    void greaterThan_whenArgumentIsNull_thenThrowException() {
+        // given
+        Integer arg = null;
+        Integer number = 10;
+
+        // when & then
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.value("number", number)
+                .greaterThan(arg)
+        );
+    }
+
     @DisplayName("넘긴 인자보다 값이 크면 아무일도 일어나지 않는다.")
     @Test
     void greaterThanOrEqualTo_whenSatisfied_thenDoNothing() {
@@ -89,6 +103,20 @@ public class NumberValidatorTest {
         Assertions.assertThrows(ValidationException.class,
             () -> Validator.value("number", number)
                 .greaterThanOrEqualTo(min)
+        );
+    }
+
+    @DisplayName("인자가 null이라면 예외가 발생한다.")
+    @Test
+    void greaterThanOrEqualTo_whenArgumentIsNull_thenThrowException() {
+        // given
+        Integer arg = null;
+        Integer number = 10;
+
+        // when & then
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.value("number", number)
+                .greaterThanOrEqualTo(arg)
         );
     }
 
@@ -134,6 +162,20 @@ public class NumberValidatorTest {
         );
     }
 
+    @DisplayName("인자가 null이라면 예외가 발생한다.")
+    @Test
+    void lessThan_whenArgumentIsNull_thenThrowException() {
+        // given
+        Integer arg = null;
+        Integer number = 10;
+
+        // when & then
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.value("number", number)
+                .lessThan(arg)
+        );
+    }
+
     @DisplayName("넘긴 인자보다 값이 작으면 아무일도 일어나지 않는다.")
     @Test
     void lessThanOrEqualTo_whenSatisfied_thenDoNothing() {
@@ -173,6 +215,20 @@ public class NumberValidatorTest {
         Assertions.assertThrows(ValidationException.class,
             () -> Validator.value("number", number)
                 .lessThanOrEqualTo(min)
+        );
+    }
+
+    @DisplayName("인자가 null이라면 예외가 발생한다.")
+    @Test
+    void lessThanOrEqualTo_whenArgumentIsNull_thenThrowException() {
+        // given
+        Integer arg = null;
+        Integer number = 10;
+
+        // when & then
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.value("number", number)
+                .lessThanOrEqualTo(arg)
         );
     }
 
@@ -251,6 +307,36 @@ public class NumberValidatorTest {
         );
     }
 
+    @DisplayName("인자가 모두 null이라면 예외가 발생한다.")
+    @Test
+    void betweenExclusive_whenArgumentsAreNull_thenThrowException() {
+        // given
+        Integer min = null;
+        Integer max = null;
+        Integer number = 10;
+
+        // when & then
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.value("number", number)
+                .betweenExclusive(min, max)
+        );
+    }
+
+    @DisplayName("인자 하나가 null이라면 예외가 발생한다.")
+    @Test
+    void betweenExclusive_whenArgumentIsNull_thenThrowException() {
+        // given
+        Integer min = null;
+        Integer max = 20;
+        Integer number = 10;
+
+        // when & then
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.value("number", number)
+                .betweenExclusive(min, max)
+        );
+    }
+
     @DisplayName("넘긴 두 인자 사이에 값이 있으면(min <= v <= max) 아무일도 일어나지 않는다.")
     @Test
     void betweenInclusive_whenSatisfied_thenDoNothing() {
@@ -321,6 +407,36 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
+            () -> Validator.value("number", number)
+                .betweenInclusive(min, max)
+        );
+    }
+
+    @DisplayName("인자가 모두 null이라면 예외가 발생한다.")
+    @Test
+    void betweenInclusive_whenArgumentsAreNull_thenThrowException() {
+        // given
+        Integer min = null;
+        Integer max = null;
+        Integer number = 10;
+
+        // when & then
+        Assertions.assertThrows(IllegalArgumentException.class,
+            () -> Validator.value("number", number)
+                .betweenInclusive(min, max)
+        );
+    }
+
+    @DisplayName("인자 하나가 null이라면 예외가 발생한다.")
+    @Test
+    void betweenInclusive_whenArgumentIsNull_thenThrowException() {
+        // given
+        Integer min = 5;
+        Integer max = null;
+        Integer number = 10;
+
+        // when & then
+        Assertions.assertThrows(IllegalArgumentException.class,
             () -> Validator.value("number", number)
                 .betweenInclusive(min, max)
         );

@@ -10,6 +10,10 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
     }
 
     public NumberValidator<N> greaterThan(N min) {
+        if (min == null) {
+            throw new IllegalArgumentException("min must not be null");
+        }
+
         if (value == null) {
             return this;
         }
@@ -20,6 +24,10 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
     }
 
     public NumberValidator<N> lessThan(N max) {
+        if (max == null) {
+            throw new IllegalArgumentException("max must not be null");
+        }
+
         if (value == null) {
             return this;
         }
@@ -30,6 +38,10 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
     }
 
     public NumberValidator<N> greaterThanOrEqualTo(N min) {
+        if (min == null) {
+            throw new IllegalArgumentException("min must not be null");
+        }
+
         if (value == null) {
             return this;
         }
@@ -40,6 +52,10 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
     }
 
     public NumberValidator<N> lessThanOrEqualTo(N max) {
+        if (max == null) {
+            throw new IllegalArgumentException("max must not be null");
+        }
+
         if (value == null) {
             return this;
         }
@@ -50,6 +66,10 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
     }
 
     public NumberValidator<N> betweenExclusive(N min, N max) {
+        if (min == null || max == null) {
+            throw new IllegalArgumentException("min and max must not be null");
+        }
+
         if (value == null) {
             return this;
         }
@@ -60,6 +80,10 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
     }
 
     public NumberValidator<N> betweenInclusive(N min, N max) {
+        if (min == null || max == null) {
+            throw new IllegalArgumentException("min and max must not be null");
+        }
+
         if (value == null) {
             return this;
         }
@@ -71,11 +95,12 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
 
 
     public NumberValidator<N> multipleOf(long number) {
-        if (value == null) {
-            return this;
-        }
         if (number == 0) {
             throw new IllegalArgumentException("Divisor cannot be zero");
+        }
+
+        if (value == null) {
+            return this;
         }
         if (!isIntegralNumber()) {
             throw new ValidationException(valueName, "must be an integral number");
