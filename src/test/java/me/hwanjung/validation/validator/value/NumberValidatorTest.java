@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class NumberValidatorTest {
 
-    @DisplayName("넘긴 인자보다 값이 크면 아무일도 일어나지 않는다.")
+    @DisplayName("greaterThan: 넘긴 인자보다 값이 크면 아무일도 일어나지 않는다.")
     @Test
     void greaterThan_whenSatisfied_thenDoNothing() {
         // given
@@ -22,7 +22,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자와 값이 같다면 예외가 발생한다.")
+    @DisplayName("greaterThan: 넘긴 인자와 값이 같다면 예외가 발생한다.")
     @Test
     void greaterThan_whenEqualToArgument_thenThrowException() {
         // given
@@ -36,7 +36,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자보다 값이 작다면 예외가 발생한다.")
+    @DisplayName("greaterThan: 넘긴 인자보다 값이 작다면 예외가 발생한다.")
     @Test
     void greaterThan_whenLessThanArgument_thenThrowException() {
         // given
@@ -50,7 +50,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("인자가 null이라면 예외가 발생한다.")
+    @DisplayName("greaterThan: 인자가 null이라면 예외가 발생한다.")
     @Test
     void greaterThan_whenArgumentIsNull_thenThrowException() {
         // given
@@ -64,7 +64,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자보다 값이 크면 아무일도 일어나지 않는다.")
+    @DisplayName("greaterThanOrEqualTo: 넘긴 인자보다 값이 크면 아무일도 일어나지 않는다.")
     @Test
     void greaterThanOrEqualTo_whenSatisfied_thenDoNothing() {
         // given
@@ -78,7 +78,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자와 값이 같다면 아무일도 일어나지 않는다.")
+    @DisplayName("greaterThanOrEqualTo: 넘긴 인자와 값이 같다면 아무일도 일어나지 않는다.")
     @Test
     void greaterThanOrEqualTo_whenEqualToToArgument_thenDoNoting() {
         // given
@@ -92,7 +92,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자보다 값이 작다면 예외가 발생한다.")
+    @DisplayName("greaterThanOrEqualTo: 넘긴 인자보다 값이 작다면 예외가 발생한다.")
     @Test
     void greaterThanOrEqualTo_whenLessThanArgumentTo_thenThrowException() {
         // given
@@ -106,7 +106,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("인자가 null이라면 예외가 발생한다.")
+    @DisplayName("greaterThanOrEqualTo: 인자가 null이라면 예외가 발생한다.")
     @Test
     void greaterThanOrEqualTo_whenArgumentIsNull_thenThrowException() {
         // given
@@ -120,7 +120,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자보다 값이 작으면 아무일도 일어나지 않는다.")
+    @DisplayName("lessThan: 넘긴 인자보다 값이 작으면 아무일도 일어나지 않는다.")
     @Test
     void lessThan_whenSatisfied_thenDoNothing() {
         // given
@@ -134,7 +134,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자와 값이 같다면 예외가 발생한다.")
+    @DisplayName("lessThan: 넘긴 인자와 값이 같다면 예외가 발생한다.")
     @Test
     void lessThan_whenEqualToArgument_thenThrowException() {
         // given
@@ -148,7 +148,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자보다 값이 크다면 예외가 발생한다.")
+    @DisplayName("lessThan: 넘긴 인자보다 값이 크다면 예외가 발생한다.")
     @Test
     void lessThan_whenLessThanArgument_thenThrowException() {
         // given
@@ -162,7 +162,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("인자가 null이라면 예외가 발생한다.")
+    @DisplayName("lessThan: 인자가 null이라면 예외가 발생한다.")
     @Test
     void lessThan_whenArgumentIsNull_thenThrowException() {
         // given
@@ -176,7 +176,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자보다 값이 작으면 아무일도 일어나지 않는다.")
+    @DisplayName("lessThanOrEqualTo: 넘긴 인자보다 값이 작으면 아무일도 일어나지 않는다.")
     @Test
     void lessThanOrEqualTo_whenSatisfied_thenDoNothing() {
         // given
@@ -190,7 +190,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자와 값이 같다면 아무일도 일어나지 않는다.")
+    @DisplayName("lessThanOrEqualTo: 넘긴 인자와 값이 같다면 아무일도 일어나지 않는다.")
     @Test
     void lessThanOrEqualTo_whenEqualToToArgument_thenDoNothing() {
         // given
@@ -204,7 +204,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자보다 값이 크다면 예외가 발생한다.")
+    @DisplayName("lessThanOrEqualTo: 넘긴 인자보다 값이 크다면 예외가 발생한다.")
     @Test
     void lessThanOrEqualTo_whenLessThanArgumentTo_thenThrowException() {
         // given
@@ -218,7 +218,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("인자가 null이라면 예외가 발생한다.")
+    @DisplayName("lessThanOrEqualTo: 인자가 null이라면 예외가 발생한다.")
     @Test
     void lessThanOrEqualTo_whenArgumentIsNull_thenThrowException() {
         // given
@@ -232,7 +232,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 두 인자 사이에 값이 있으면(min < v < max) 아무일도 일어나지 않는다.")
+    @DisplayName("betweenExclusive: 넘긴 두 인자 사이에 값이 있으면(min < v < max) 아무일도 일어나지 않는다.")
     @Test
     void betweenExclusive_whenSatisfied_thenDoNothing() {
         // given
@@ -247,7 +247,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자 중 작은 수와 같다면 예외가 발생한다.")
+    @DisplayName("betweenExclusive: 넘긴 인자 중 작은 수와 같다면 예외가 발생한다.")
     @Test
     void betweenExclusive_whenEqualToMin_thenThrowException() {
         // given
@@ -262,7 +262,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자 중 큰 수와 같다면 예외가 발생한다.")
+    @DisplayName("betweenExclusive: 넘긴 인자 중 큰 수와 같다면 예외가 발생한다.")
     @Test
     void betweenExclusive_whenEqualToMax_thenThrowException() {
         // given
@@ -277,7 +277,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자 중 작은 수 보다 작다면 예외가 발생한다.")
+    @DisplayName("betweenExclusive: 넘긴 인자 중 작은 수 보다 작다면 예외가 발생한다.")
     @Test
     void betweenExclusive_whenLessThanMin_thenThrowException() {
         // given
@@ -292,7 +292,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자 중 큰 수 보다 크다면 예외가 발생한다.")
+    @DisplayName("betweenExclusive: 넘긴 인자 중 큰 수 보다 크다면 예외가 발생한다.")
     @Test
     void betweenExclusive_whenGreaterThanMax_thenThrowException() {
         // given
@@ -307,7 +307,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("인자가 모두 null이라면 예외가 발생한다.")
+    @DisplayName("betweenExclusive: 인자가 모두 null이라면 예외가 발생한다.")
     @Test
     void betweenExclusive_whenArgumentsAreNull_thenThrowException() {
         // given
@@ -322,7 +322,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("인자 하나가 null이라면 예외가 발생한다.")
+    @DisplayName("betweenExclusive: 인자 하나가 null이라면 예외가 발생한다.")
     @Test
     void betweenExclusive_whenArgumentIsNull_thenThrowException() {
         // given
@@ -337,7 +337,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 두 인자 사이에 값이 있으면(min <= v <= max) 아무일도 일어나지 않는다.")
+    @DisplayName("betweenInclusive: 넘긴 두 인자 사이에 값이 있으면(min <= v <= max) 아무일도 일어나지 않는다.")
     @Test
     void betweenInclusive_whenSatisfied_thenDoNothing() {
         // given
@@ -352,7 +352,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자 중 작은 수와 같다면 아무일도 일어나지 않는다.")
+    @DisplayName("betweenInclusive: 넘긴 인자 중 작은 수와 같다면 아무일도 일어나지 않는다.")
     @Test
     void betweenInclusive_whenEqualToMin_thenDoNoting() {
         // given
@@ -367,7 +367,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자 중 큰 수와 같다면 아무일도 일어나지 않는다.")
+    @DisplayName("betweenInclusive: 넘긴 인자 중 큰 수와 같다면 아무일도 일어나지 않는다.")
     @Test
     void betweenInclusive_whenEqualToMax_thenDoNothing() {
         // given
@@ -382,7 +382,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자 중 작은 수 보다 작다면 예외가 발생한다.")
+    @DisplayName("betweenInclusive: 넘긴 인자 중 작은 수 보다 작다면 예외가 발생한다.")
     @Test
     void betweenInclusive_whenLessThanMin_thenThrowException() {
         // given
@@ -397,7 +397,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("넘긴 인자 중 큰 수 보다 크다면 예외가 발생한다.")
+    @DisplayName("betweenInclusive: 넘긴 인자 중 큰 수 보다 크다면 예외가 발생한다.")
     @Test
     void betweenInclusive_whenGreaterThanMax_thenThrowException() {
         // given
@@ -412,7 +412,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("인자가 모두 null이라면 예외가 발생한다.")
+    @DisplayName("betweenInclusive: 인자가 모두 null이라면 예외가 발생한다.")
     @Test
     void betweenInclusive_whenArgumentsAreNull_thenThrowException() {
         // given
@@ -427,7 +427,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("인자 하나가 null이라면 예외가 발생한다.")
+    @DisplayName("betweenInclusive: 인자 하나가 null이라면 예외가 발생한다.")
     @Test
     void betweenInclusive_whenArgumentIsNull_thenThrowException() {
         // given
@@ -442,7 +442,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("값이 넘긴 인자의 배수이면 아무일도 발생하지 않는다.")
+    @DisplayName("multipleOf: 값이 넘긴 인자의 배수이면 아무일도 발생하지 않는다.")
     @Test
     void multipleOf_whenSatisfied_thenDoNothing() {
         // given
@@ -456,7 +456,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("값이 넘긴 인자의 배수가 아니라면 예외가 발생한다.")
+    @DisplayName("multipleOf: 값이 넘긴 인자의 배수가 아니라면 예외가 발생한다.")
     @Test
     void multipleOf_whenNotSatisfied_thenThrowException() {
         // given
@@ -470,7 +470,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("value가 정수가 아니라면 예외가 발생한다.")
+    @DisplayName("multipleOf: value가 정수가 아니라면 예외가 발생한다.")
     @Test
     void multipleOf_whenValueIsNotIntegralNumber_thenThrowException() {
         // given
@@ -484,7 +484,7 @@ public class NumberValidatorTest {
         );
     }
 
-    @DisplayName("Divisor로 넘기는 인자가 0이라면 예외가 발생한다.")
+    @DisplayName("multipleOf: Divisor로 넘기는 인자가 0이라면 예외가 발생한다.")
     @Test
     void multipleOf_when_thenThrowException() {
         // given

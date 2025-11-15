@@ -7,7 +7,7 @@ import me.hwanjung.validation.exception.ValidationException;
 
 public class BaseValidatorTest {
 
-    @DisplayName("value가 null이면 예외가 발생한다.")
+    @DisplayName("notNull: value가 null이면 예외가 발생한다.")
     @Test
     void notNull_whenValueIsNull_thenThrowException() {
         // given
@@ -19,7 +19,7 @@ public class BaseValidatorTest {
         );
     }
 
-    @DisplayName("value가 null이 아니라면 아무 일도 일어나지 않는다.")
+    @DisplayName("notNull: value가 null이 아니라면 아무 일도 일어나지 않는다.")
     @Test
     void notNull_whenValueIsNotNull_thenDoNothing() {
         // given
@@ -31,7 +31,7 @@ public class BaseValidatorTest {
         );
     }
 
-    @DisplayName("사용자가 정한 조건에 만족한다면 아무 일도 일어나지 않는다.")
+    @DisplayName("satisfies: 사용자가 정한 조건에 만족한다면 아무 일도 일어나지 않는다.")
     @Test
     void satisfies_whenSatisfies_thenDoNothing() {
         String value = "value";
@@ -42,7 +42,7 @@ public class BaseValidatorTest {
         );
     }
 
-    @DisplayName("사용자가 정한 조건에 만족하지 않는다면 예외가 발생한다.")
+    @DisplayName("satisfies: 사용자가 정한 조건에 만족하지 않는다면 예외가 발생한다.")
     @Test
     void satisfies_whenNotSatisfies_thenThrowException() {
         String value = "value";
