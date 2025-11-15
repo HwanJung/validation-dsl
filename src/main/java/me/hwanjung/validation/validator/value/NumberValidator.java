@@ -29,17 +29,17 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
         return this;
     }
 
-    public NumberValidator<N> greaterThanOrEqual(N min) {
+    public NumberValidator<N> greaterThanOrEqualTo(N min) {
         if (value == null) {
             return this;
         }
-        if (value.compareTo(min) > 0) {
-            throw new ValidationException(valueName, "must be greater than or equal to" + min);
+        if (value.compareTo(min) < 0) {
+            throw new ValidationException(valueName, "must be greater than or equal to " + min);
         }
         return this;
     }
 
-    public NumberValidator<N> lessThanOrEqual(N max) {
+    public NumberValidator<N> lessThanOrEqualTo(N max) {
         if (value == null) {
             return this;
         }
@@ -74,11 +74,11 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
         if (value == null) {
             return this;
         }
+        if (number == 0) {
+            throw new IllegalArgumentException("Divisor cannot be zero");
+        }
         if (!isIntegralNumber()) {
             throw new ValidationException(valueName, "must be an integral number");
-        }
-        if (number == 0) {
-            throw new ValidationException(valueName, "cannot be divisible by 0");
         }
 
         long v = value.longValue();

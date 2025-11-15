@@ -1,9 +1,8 @@
-package me.hwanjung.validation.validator.value;
+package me.hwanjung.validation.validator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import me.hwanjung.validation.validator.Validator;
 import me.hwanjung.validation.exception.ValidationException;
 
 public class BaseValidatorTest {
@@ -26,10 +25,7 @@ public class BaseValidatorTest {
         // given
         String value = "value";
 
-        // when
-        Validator.value("value", value).notNull();
-
-        // then
+        // when & then
         Assertions.assertDoesNotThrow(
             () -> Validator.value("value", value).notNull()
         );
