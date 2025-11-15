@@ -1,8 +1,7 @@
-package validator;
+package me.hwanjung.validator;
 
-import validator.value.NumberValidator;
-import validator.value.StringValidator;
-import validator.value.ValueValidator;
+import me.hwanjung.validator.value.NumberValidator;
+import me.hwanjung.validator.value.StringValidator;
 
 public class Validator {
 
@@ -16,7 +15,7 @@ public class Validator {
         return new NumberValidator<>(valueName, value);
     }
 
-    public static <T> ValueValidator<T> value(String valueName, T value) {
-        return new ValueValidator<>(valueName, value);
+    public static <T> BaseValidator<T> value(String valueName, T value) {
+        return new BaseValidator<>(valueName, value);
     }
 }

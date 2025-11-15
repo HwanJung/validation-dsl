@@ -1,15 +1,17 @@
 # Validation DSL
 
 ### 사용 예시
-Validator
-    .value("email", email)
-        .notBlank()
-    .value("name", name)
-        .notBlank()
-        .maxLength(8);
+Validator.value("email", email)
+    .notBlank()
+    
+Validator.value("name", name)
+    .notBlank()
+    .maxLength(8);
 
-- [x] 값 검증
+- [ ] 공통 검증
   - [x] null일 때 검증
+  - [ ] 사용자 지정 조건 검증
+- [x] 값 검증
   - [x] 타입이 String일 때
     - [x] Blank일 때 검증
     - [x] Empty일 때 검증

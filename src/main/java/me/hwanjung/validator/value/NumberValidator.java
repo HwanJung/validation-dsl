@@ -1,8 +1,9 @@
-package validator.value;
+package me.hwanjung.validator.value;
 
-import main.java.exception.ValidationException;
+import me.hwanjung.validator.BaseValidator;
+import me.hwanjung.validator.exception.ValidationException;
 
-public class NumberValidator<N extends Number & Comparable<N>> extends ValueValidator<N> {
+public class NumberValidator<N extends Number & Comparable<N>> extends BaseValidator<N> {
 
     public NumberValidator(String valueName, N value) {
         super(valueName, value);
