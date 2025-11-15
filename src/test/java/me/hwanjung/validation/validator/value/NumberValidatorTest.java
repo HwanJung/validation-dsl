@@ -17,7 +17,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .greaterThan(min)
         );
     }
@@ -31,7 +31,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .greaterThan(min)
         );
     }
@@ -45,7 +45,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .greaterThan(min)
         );
     }
@@ -59,7 +59,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .greaterThan(arg)
         );
     }
@@ -73,7 +73,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .greaterThanOrEqualTo(min)
         );
     }
@@ -87,7 +87,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .greaterThanOrEqualTo(min)
         );
     }
@@ -101,7 +101,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .greaterThanOrEqualTo(min)
         );
     }
@@ -115,7 +115,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .greaterThanOrEqualTo(arg)
         );
     }
@@ -129,7 +129,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .lessThan(max)
         );
     }
@@ -143,7 +143,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .lessThan(max)
         );
     }
@@ -157,7 +157,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .lessThan(min)
         );
     }
@@ -171,7 +171,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .lessThan(arg)
         );
     }
@@ -185,7 +185,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .lessThanOrEqualTo(min)
         );
     }
@@ -199,7 +199,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .lessThanOrEqualTo(min)
         );
     }
@@ -213,7 +213,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .lessThanOrEqualTo(min)
         );
     }
@@ -227,7 +227,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .lessThanOrEqualTo(arg)
         );
     }
@@ -242,7 +242,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
             .betweenExclusive(min, max)
         );
     }
@@ -257,7 +257,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenExclusive(min, max)
         );
     }
@@ -272,7 +272,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenExclusive(min, max)
         );
     }
@@ -287,7 +287,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenExclusive(min, max)
         );
     }
@@ -302,7 +302,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenExclusive(min, max)
         );
     }
@@ -317,7 +317,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenExclusive(min, max)
         );
     }
@@ -332,7 +332,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenExclusive(min, max)
         );
     }
@@ -347,7 +347,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenInclusive(min, max)
         );
     }
@@ -362,7 +362,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenInclusive(min, max)
         );
     }
@@ -377,7 +377,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenInclusive(min, max)
         );
     }
@@ -392,7 +392,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenInclusive(min, max)
         );
     }
@@ -407,7 +407,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenInclusive(min, max)
         );
     }
@@ -422,7 +422,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenInclusive(min, max)
         );
     }
@@ -437,7 +437,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .betweenInclusive(min, max)
         );
     }
@@ -451,7 +451,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .multipleOf(divisor)
         );
     }
@@ -465,21 +465,21 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .multipleOf(divisor)
         );
     }
 
     @DisplayName("multipleOf: value가 정수가 아니라면 예외가 발생한다.")
     @Test
-    void multipleOf_whenValueIsNotIntegralNumber_thenThrowException() {
+    void multipleOf_whenValidateIsNotIntegralNumber_thenThrowException() {
         // given
         int divisor = 10;
         double number = 50;
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .multipleOf(divisor)
         );
     }
@@ -493,7 +493,7 @@ public class NumberValidatorTest {
 
         // when & then
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> Validator.value("number", number)
+            () -> Validator.validate("number", number)
                 .multipleOf(divisor)
         );
     }
