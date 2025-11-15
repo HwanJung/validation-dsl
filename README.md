@@ -1,22 +1,79 @@
 # Validation DSL
 
 ### 사용 예시
-  Validator.validate("number", number)
-    .greaterThan(10);
+    int number = 15;
+    Validator.validate(number)
+        .greaterThan(10);
 
-  Validator.validate("name", name)
-    .notBlank()
-    .maxLength(8);
-    .satisfies(s -> s.equals(name));
+    String name = "name";
+    Validator.validate(name)
+        .notBlank()
+        .maxLength(8);
+        .satisfies(s -> s.equals(name));
 
-  Validate.validate("listName", list)
-    .notNull()
-    .notEmpty()
-    .sizeAtMost(5)
-    .forEach(e -> e
-      .notNull()
-      .satisfies(s -> !s.isBlank())
-    );
+    User user = new User("name");
+    Validator.validate(user)
+        .notNull()
+        .satisfies(u -> "name".equals(u.getName()));
+
+    List<String> list = List.of("a", "b", "c");    
+    Validator.validateStrings(list)
+        .notNull()
+        .notEmpty()
+        .sizeAtMost(5)
+        .forEach(e -> e
+            .notNull()
+            .maxLength(1)
+        );
+
+    Set<String> set = List.of("a", "b", "c");    
+    Validator.validateStrings(set)
+        .notNull()
+        .notEmpty()
+        .sizeAtMost(5)
+        .forEach(e -> e
+            .notNull()
+            .satisfies(s -> !s.isBlank())
+        );
+
+    List<Integer> list = List.of(1, 2, 3);    
+    Validator.validateNumbers(list)
+        .notEmpty()
+        .sizeAtMost(5)
+        .forEach(e -> e
+            .notNull()
+            .greaterThan(0)
+        );
+
+    Set<Integer> set = List.of(1, 2, 3);    
+    Validator.validateNumbers(set)
+        .notEmpty()
+        .sizeAtMost(5)
+        .forEach(e -> e
+            .notNull()
+            .greaterThan(0)
+        );
+
+    List<User> userList = new ArrayList<>();
+    userList.add(u1);
+    userList.add(u2);
+    Validator.validateObjects(users)
+        .notEmpty()
+        .sizeAtMost(5)
+        .forEach(e -> e
+            .notNull()
+        );
+
+    Set<User> userSet = new HashSet<>();
+    userSet.add(u1);
+    userSet.add(u2);
+    Validator.validateObjects(users)
+        .notEmpty()
+        .sizeAtMost(5)
+        .forEach(e -> e
+            .notNull()
+        );
+    
 
 - [x] 공통 검증
   - [x] notNull 조건
