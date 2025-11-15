@@ -13,7 +13,7 @@
     .notNull()
     .notEmpty()
     .sizeAtMost(5)
-    .forEach("element", e -> e
+    .forEach(e -> e
       .notNull()
       .satisfies(s -> !s.isBlank())
     );
@@ -33,10 +33,10 @@
     - [x] 사잇값 조건
     - [x] 특정 숫자로 나누어 떨어지는지 조건
     - [x] 인자가 null이라면 예외
-- [ ] 리스트 검증
-  - [ ] notEmpty 조건
-  - [ ] 리스트 최대 크기 조건
-  - [ ] 리스트 최소 크기 조건
-  - [ ] 리스트 특정 크기 조건
-  - [ ] 각 요소 검증
+- [x] 리스트 검증
+  - [x] notEmpty 조건
+  - [x] 리스트 최대 크기 조건
+  - [x] 리스트 최소 크기 조건
+  - [x] 리스트 특정 크기 조건
+  - [x] 각 요소 검증
 
