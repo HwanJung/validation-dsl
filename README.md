@@ -75,66 +75,79 @@ User user = new User("name");
 
 
 
-    // todo
+// Collection(List, Set)에 대한 검증
 
+// 검증할 Collection이 만족해야 하는 조건을 정의한 뒤 조건이 만족되면 아무 일도 일어나지 않는다.
+// 사용할 수 있는 조건은 아래와 같다.
+// forEach 안에는 람다식으로 Collection안의 요소들에 대한 조건을 적을 수 있다.
 
-    List<String> list = List.of("a", "b", "c");    
-    Validator.validateStrings(list)
+// 1. Element가 String인 Collection일 때는 validateStrings()를 사용한다.
+
+List<String> list = List.of("a", "b", "c");    
+Validator.validateStrings(list)
+    .notNull()
+    .notEmpty()
+    .sizeAtLeast(3)
+    .sizeAtMost(5)
+    .size(3)
+    .forEach(e -> e
         .notNull()
-        .notEmpty()
-        .sizeAtMost(5)
-        .forEach(e -> e
-            .notNull()
-            .maxLength(1)
-        );
+        .maxLength(1)
+    );
 
-    Set<String> set = List.of("a", "b", "c");    
-    Validator.validateStrings(set)
+Set<String> set = List.of("a", "b", "c");    
+Validator.validateStrings(set)
+    .notNull()
+    .notEmpty()
+    .sizeAtLeast(3)
+    .sizeAtMost(5)
+    .size(3)
+    .forEach(e -> e
+       .notNull()
+       .satisfies(s -> !s.isBlank())
+    );
+
+// 2. Element가 Number의 자식 클래스인 Collection일 때는 validateNumbers()를 사용한다.
+
+List<Integer> list = List.of(1, 2, 3);    
+Validator.validateNumbers(list)
+    .notEmpty()
+    .sizeAtMost(5)
+    .forEach(e -> e
         .notNull()
-        .notEmpty()
-        .sizeAtMost(5)
-        .forEach(e -> e
-            .notNull()
-            .satisfies(s -> !s.isBlank())
-        );
+        .greaterThan(0)
+    );
 
-    List<Integer> list = List.of(1, 2, 3);    
-    Validator.validateNumbers(list)
-        .notEmpty()
-        .sizeAtMost(5)
-        .forEach(e -> e
-            .notNull()
-            .greaterThan(0)
-        );
+Set<Integer> set = List.of(1, 2, 3);    
+Validator.validateNumbers(set)
+    .notEmpty()
+    .sizeAtMost(5)
+    .forEach(e -> e
+        .notNull()
+        .greaterThan(0)
+    );
 
-    Set<Integer> set = List.of(1, 2, 3);    
-    Validator.validateNumbers(set)
-        .notEmpty()
-        .sizeAtMost(5)
-        .forEach(e -> e
-            .notNull()
-            .greaterThan(0)
-        );
+// 3. Element가 그 이외의 타입인 Collection일 때는 validateObjects()를 사용한다.
 
-    List<User> userList = new ArrayList<>();
-    userList.add(u1);
-    userList.add(u2);
-    Validator.validateObjects(users)
-        .notEmpty()
-        .sizeAtMost(5)
-        .forEach(e -> e
-            .notNull()
-        );
+List<User> userList = new ArrayList<>();
+userList.add(u1);
+userList.add(u2);
+Validator.validateObjects(users)
+    .notEmpty()
+    .sizeAtMost(5)
+    .forEach(e -> e
+        .notNull()
+    );
 
-    Set<User> userSet = new HashSet<>();
-    userSet.add(u1);
-    userSet.add(u2);
-    Validator.validateObjects(users)
-        .notEmpty()
-        .sizeAtMost(5)
-        .forEach(e -> e
-            .notNull()
-        );
+Set<User> userSet = new HashSet<>();
+userSet.add(u1);
+userSet.add(u2);
+Validator.validateObjects(users)
+    .notEmpty()
+    .sizeAtMost(5)
+    .forEach(e -> e
+        .notNull()
+    );
 ```
 
 
