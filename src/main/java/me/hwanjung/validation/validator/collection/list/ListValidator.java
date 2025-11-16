@@ -12,4 +12,6 @@ public class ListValidator<E, V extends BaseValidator<E>>
     public ListValidator(List<E> field, Function<E, V> elementValidatorFactory) {
         super(field, elementValidatorFactory);
     }
+
+    // Additional specific implement for list
 }

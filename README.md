@@ -159,9 +159,9 @@ User user = new User("name");
   - [x] 리스트 최소 크기 조건
   - [x] 리스트 특정 크기 조건
   - [x] 각 요소 검증
-- [ ] Set 검증
-  - [ ] notEmpty 조건
-  - [ ] Set 최대 크기 조건
-  - [ ] Set 최소 크기 조건
-  - [ ] Set 특정 크기 조건
-  - [ ] 각 요소 검증
+- [x] Set 검증
+  - [x] notEmpty 조건
+  - [x] Set 최대 크기 조건
+  - [x] Set 최소 크기 조건
+  - [x] Set 특정 크기 조건
+  - [x] 각 요소 검증

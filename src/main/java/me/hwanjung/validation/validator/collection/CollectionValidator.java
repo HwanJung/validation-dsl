@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public abstract class CollectionValidator<E, C extends Collection<E>, V extends BaseValidator<E>>
+public class CollectionValidator<E, C extends Collection<E>, V extends BaseValidator<E>>
     extends BaseValidator<C> {
 
     protected final Function<E, V> elementValidatorFactory;
