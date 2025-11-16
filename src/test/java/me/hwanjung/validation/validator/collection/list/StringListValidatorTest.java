@@ -1,25 +1,27 @@
-package me.hwanjung.validation.validator.list;
+package me.hwanjung.validation.validator.collection.list;
 
 import me.hwanjung.validation.exception.ValidationException;
 import me.hwanjung.validation.validator.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class NumberListValidatorTest {
+public class StringListValidatorTest {
 
     @DisplayName("notEmpty: 리스트가 null이거나 비어있다면 예외가 발생한다.")
     @Test
     void notEmpty_whenListIsEmpty() {
         // given
-        List<Integer> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(list).notEmpty()
+            () -> Validator.validateStrings(list).notEmpty()
         );
     }
 
@@ -27,12 +29,12 @@ class NumberListValidatorTest {
     @Test
     void notEmpty_whenListIsNotEmpty() {
         // given
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
+        List<String> list = new ArrayList<>();
+        list.add("a");
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list).notEmpty()
+            () -> Validator.validateStrings(list).notEmpty()
         );
     }
 
@@ -40,12 +42,12 @@ class NumberListValidatorTest {
     @Test
     void sizeAtLeast_whenListIsNull() {
         // given
-        List<Integer> list = null;
+        List<String> list = null;
         int min = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list).sizeAtLeast(min)
+            () -> Validator.validateStrings(list).sizeAtLeast(min)
         );
     }
 
@@ -53,12 +55,12 @@ class NumberListValidatorTest {
     @Test
     void sizeAtLeast_whenListSizeLessThanMin() {
         // given
-        List<Integer> list = List.of(1, 2, 3);
+        List<String> list = List.of("a", "b", "hello");
         int min = 5;
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(list).sizeAtLeast(min)
+            () -> Validator.validateStrings(list).sizeAtLeast(min)
         );
     }
 
@@ -66,16 +68,16 @@ class NumberListValidatorTest {
     @Test
     void sizeAtLeast_whenSatisfy() {
         // given
-        List<Integer> list1 = List.of(1, 2, 3);
-        List<Integer> list2 = List.of(4, 5, 6, 7);
+        List<String> list1 = List.of("a", "b", "hello");
+        List<String> list2 = List.of("a", "b", "c", "d");
         int min = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list1).sizeAtLeast(min)
+            () -> Validator.validateStrings(list1).sizeAtLeast(min)
         );
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list2).sizeAtLeast(min)
+            () -> Validator.validateStrings(list2).sizeAtLeast(min)
         );
     }
 
@@ -83,12 +85,12 @@ class NumberListValidatorTest {
     @Test
     void sizeAtMost_whenListIsNull() {
         // given
-        List<Integer> list = null;
+        List<String> list = null;
         int max = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list).sizeAtMost(max)
+            () -> Validator.validateStrings(list).sizeAtMost(max)
         );
     }
 
@@ -96,12 +98,12 @@ class NumberListValidatorTest {
     @Test
     void sizeAtMost_whenListSizeGreaterThanMax() {
         // given
-        List<Integer> list = List.of(1, 2, 3, 4, 5);
+        List<String> list = List.of("a", "b", "hello", "c");
         int max = 3;
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(list).sizeAtMost(max)
+            () -> Validator.validateStrings(list).sizeAtMost(max)
         );
     }
 
@@ -109,11 +111,11 @@ class NumberListValidatorTest {
     @Test
     void size_whenListIsNull() {
         // given
-        List<Integer> list = null;
+        List<String> list = null;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list).size(1)
+            () -> Validator.validateStrings(list).size(1)
         );
     }
 
@@ -121,12 +123,12 @@ class NumberListValidatorTest {
     @Test
     void size_whenListSizeNotEqualsSize() {
         // given
-        List<Integer> list = List.of(1, 2, 3);
+        List<String> list = List.of("a", "b", "hello");
         int size = 4;
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(list).size(size)
+            () -> Validator.validateStrings(list).size(size)
         );
     }
 
@@ -134,12 +136,12 @@ class NumberListValidatorTest {
     @Test
     void size_whenListSizeEqualsSize() {
         // given
-        List<Integer> list = List.of(1, 2, 3);
+        List<String> list = List.of("a", "b", "hello");
         int size = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list).size(size)
+            () -> Validator.validateStrings(list).size(size)
         );
     }
 
@@ -147,11 +149,11 @@ class NumberListValidatorTest {
     @Test
     void forEach_whenListIsNull() {
         // given
-        List<Integer> list = null;
+        List<String> list = null;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list).forEach(null)
+            () -> Validator.validateStrings(list).forEach(null)
         );
     }
 
@@ -159,28 +161,29 @@ class NumberListValidatorTest {
     @Test
     void forEach_whenNotSatisfy() {
         // given
-        List<Integer> list = List.of(1, 2, 3);
+        List<String> list = List.of("a", "b", "c");
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(list)
-                    .forEach(e -> e.greaterThan(2))
-            );
+            () -> Validator.validateStrings(list)
+                .forEach(e -> e
+                    .notNull()
+                    .minLength(2))
+        );
     }
 
     @DisplayName("forEach: 리스트의 모든 요소가 조건을 만족한다면 아무 일도 일어나지 않는다.")
     @Test
     void forEach_whenSatisfy() {
         // given
-        List<Integer> list = List.of(1, 2, 3);
+        List<String> list = List.of("a", "b", "c");
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(list)
+            () -> Validator.validateStrings(list)
                 .forEach(e -> e
                     .notNull()
-                    .lessThan(10)
-                )
+                    .minLength(1))
         );
     }
 }
