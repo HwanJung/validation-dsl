@@ -29,4 +29,9 @@ public class Validator {
     public static <N extends Number & Comparable<N>> ListValidator<N, NumberValidator<N>> validateNumbers(List<N> list) {
         return new ListValidator<>(list, NumberValidator::new);
     }
+
+    public static <E> ListValidator<E, BaseValidator<E>> validateObjects(List<E> list) {
+        return new ListValidator<>(list, BaseValidator::new);
+    }
+
 }
