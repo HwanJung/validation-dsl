@@ -74,6 +74,7 @@
             .notNull()
         );
     
+    users.stream().map(
 
 - [x] 공통 검증
   - [x] notNull 조건

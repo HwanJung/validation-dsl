@@ -1,26 +1,30 @@
-package me.hwanjung.validation.validator.list;
+package me.hwanjung.validation.validator.collection;
 
 import me.hwanjung.validation.exception.ValidationException;
 import me.hwanjung.validation.validator.BaseValidator;
-import me.hwanjung.validation.validator.Validator;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class ListValidator<E> extends BaseValidator<List<E>> {
+public abstract class CollectionValidator<E, C extends Collection<E>, V extends BaseValidator<E>>
+    extends BaseValidator<C> {
 
-    public ListValidator(List<E> field) {
+    protected final Function<E, V> elementValidatorFactory;
+
+    public CollectionValidator(C field, Function<E, V> elementValidatorFactory) {
         super(field);
+        this.elementValidatorFactory = elementValidatorFactory;
     }
 
-    public ListValidator<E> notEmpty() {
+    public CollectionValidator<E, C, V> notEmpty() {
         if (field == null || field.isEmpty()) {
             throw new ValidationException("must not be empty");
         }
         return this;
     }
 
-    public ListValidator<E> sizeAtLeast(int min) {
+    public CollectionValidator<E, C, V> sizeAtLeast(int min) {
         if (field == null) {
             return this;
         }
@@ -30,7 +34,7 @@ public class ListValidator<E> extends BaseValidator<List<E>> {
         return this;
     }
 
-    public ListValidator<E> sizeAtMost(int max) {
+    public CollectionValidator<E, C, V> sizeAtMost(int max) {
         if (field == null) {
             return this;
         }
@@ -40,7 +44,7 @@ public class ListValidator<E> extends BaseValidator<List<E>> {
         return this;
     }
 
-    public ListValidator<E> size(int size) {
+    public CollectionValidator<E, C, V> size(int size) {
         if (field == null) {
             return this;
         }
@@ -50,17 +54,13 @@ public class ListValidator<E> extends BaseValidator<List<E>> {
         return this;
     }
 
-    public <V extends BaseValidator<E>> ListValidator<E> forEach(Consumer<V> validator) {
+    public CollectionValidator<E, C, V> forEach(Consumer<V> validator) {
         if (field == null) {
             return this;
         }
-        for (int i = 0; i < field.size(); i++) {
-            E element = field.get(i);
-            String elementName = "element[" + i + "]";
-            V val = (V) Validator.validate(element);
-            validator.accept(val);
+        for (E element : field) {
+            validator.accept(elementValidatorFactory.apply(element));
         }
         return this;
     }
-
 }
