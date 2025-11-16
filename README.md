@@ -1,10 +1,9 @@
 # Validation DSL
 
-### 사용 예시
+## 사용 예시
+
+### Integer, Long, Double 등의 Number 타입의 값 검증
 ```java
-
-// Integer, Long, Double 등의 Number 타입의 값 검증
-
 // 검증할 변수가 만족해야 하는 조건을 정의한 뒤 조건이 만족되면 아무 일도 일어나지 않는다.
 // 모든 Number의 자식 타입에 대해 사용할 수 있는 조건은 아래와 같다.
 int number = 30;
@@ -33,11 +32,10 @@ Validator.validate(number)
     .notNull()
     .greaterThan(10)
     .multipleOf(29);  // throw ValidationException
-    
+```    
 
-
-// String 타입의 값 검증
-    
+### String 타입의 값 검증
+```java
 // 검증할 변수가 만족해야 하는 조건을 정의한 뒤 조건이 만족되면 아무 일도 일어나지 않는다.
 // String 타입에 대해 사용할 수 있는 조건은 아래와 같다.
 
@@ -57,13 +55,10 @@ String name = "name";
 Validator.validate(number)
     .notNull()
     .maxLength(2); // throw ValidationException
-    
+```
 
-
-
-
-// 그 이외의 타입에 대한 검증
-    
+### 그 이외의 타입에 대한 검증
+```java
 // 검증할 변수가 만족해야 하는 조건을 정의한 뒤 조건이 만족되면 아무 일도 일어나지 않는다.
 // 사용할 수 있는 조건은 아래와 같다.
 
@@ -71,12 +66,12 @@ User user = new User("name");
     Validator.validate(user)
         .notNull()
         .satisfies(u -> "name".equals(u.getName()));
+```
 
 
 
-
-// Collection(List, Set)에 대한 검증
-
+### Collection(List, Set)에 대한 검증
+```java
 // 검증할 Collection이 만족해야 하는 조건을 정의한 뒤 조건이 만족되면 아무 일도 일어나지 않는다.
 // 사용할 수 있는 조건은 아래와 같다.
 // forEach 안에는 람다식으로 Collection안의 요소들에 대한 조건을 적을 수 있다.
