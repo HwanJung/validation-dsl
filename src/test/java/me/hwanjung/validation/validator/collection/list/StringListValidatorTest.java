@@ -64,7 +64,7 @@ public class StringListValidatorTest {
         );
     }
 
-    @DisplayName("sizeAtLeast: 리스트의 크기가 min보다 크다면 아무 일도 발생하지 않는다.")
+    @DisplayName("sizeAtLeast: 리스트의 크기가 min보다 같거나 크다면 아무 일도 발생하지 않는다.")
     @Test
     void sizeAtLeast_whenSatisfy() {
         // given
@@ -104,6 +104,23 @@ public class StringListValidatorTest {
         // when & then
         assertThrows(ValidationException.class,
             () -> Validator.validateStrings(list).sizeAtMost(max)
+        );
+    }
+
+    @DisplayName("sizeAtMost: 리스트가 max보다 같거나 작다면 아무 일도 발생하지 않는다.")
+    @Test
+    void sizeAtMost_whenListSizeLessThanMax() {
+        // given
+        List<String> list1 = List.of("a", "b");
+        List<String> list2 = List.of("a", "b", "c");
+        int max = 3;
+
+        // when & then
+        assertDoesNotThrow(
+            () -> Validator.validateStrings(list1).sizeAtMost(max)
+        );
+        assertDoesNotThrow(
+            () -> Validator.validateStrings(list2).sizeAtMost(max)
         );
     }
 

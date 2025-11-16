@@ -62,7 +62,7 @@ class NumberListValidatorTest {
         );
     }
 
-    @DisplayName("sizeAtLeast: 리스트의 크기가 min보다 크다면 아무 일도 발생하지 않는다.")
+    @DisplayName("sizeAtLeast: 리스트의 크기가 min보다 크거나 같다면 아무 일도 발생하지 않는다.")
     @Test
     void sizeAtLeast_whenSatisfy() {
         // given
@@ -102,6 +102,24 @@ class NumberListValidatorTest {
         // when & then
         assertThrows(ValidationException.class,
             () -> Validator.validateNumbers(list).sizeAtMost(max)
+        );
+    }
+
+    @DisplayName("sizeAtMost: 리스트가 max보다 작거나 같다면 아무 일도 일어나지 않는다.")
+    @Test
+    void sizeAtMost_whenListSizeLessThanMax() {
+        // given
+        List<Integer> list1 = List.of(1, 2, 3);
+        List<Integer> list2 = List.of(1, 2);
+        int max = 3;
+
+        // when & then
+        assertDoesNotThrow(
+            () -> Validator.validateNumbers(list1).sizeAtMost(max)
+        );
+        // when & then
+        assertDoesNotThrow(
+            () -> Validator.validateNumbers(list2).sizeAtMost(max)
         );
     }
 
