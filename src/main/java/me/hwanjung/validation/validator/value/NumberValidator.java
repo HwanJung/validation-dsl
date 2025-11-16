@@ -3,10 +3,31 @@ package me.hwanjung.validation.validator.value;
 import me.hwanjung.validation.validator.BaseValidator;
 import me.hwanjung.validation.exception.ValidationException;
 
+import java.util.function.Predicate;
+
 public class NumberValidator<N extends Number & Comparable<N>> extends BaseValidator<N> {
 
     public NumberValidator(N field) {
         super(field);
+    }
+
+    @Override
+    public NumberValidator<N> notNull() {
+        if (this.field == null) {
+            throw new ValidationException("must not be NULL");
+        }
+        return this;
+    }
+
+    @Override
+    public NumberValidator<N> satisfies(Predicate<N> predicate) {
+        if (this.field == null) {
+            return this;
+        }
+        if (!predicate.test(this.field)) {
+            throw new ValidationException("must satisfies the condition that user set");
+        }
+        return this;
     }
 
     public NumberValidator<N> greaterThan(N min) {

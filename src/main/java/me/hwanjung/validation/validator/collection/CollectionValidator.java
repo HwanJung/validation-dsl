@@ -6,6 +6,7 @@ import me.hwanjung.validation.validator.BaseValidator;
 import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class CollectionValidator<E, C extends Collection<E>, V extends BaseValidator<E>>
     extends BaseValidator<C> {
@@ -15,6 +16,25 @@ public abstract class CollectionValidator<E, C extends Collection<E>, V extends 
     public CollectionValidator(C field, Function<E, V> elementValidatorFactory) {
         super(field);
         this.elementValidatorFactory = elementValidatorFactory;
+    }
+
+    @Override
+    public CollectionValidator<E, C, V> notNull() {
+        if (this.field == null) {
+            throw new ValidationException("must not be NULL");
+        }
+        return this;
+    }
+
+    @Override
+    public CollectionValidator<E, C, V> satisfies(Predicate<C> predicate) {
+        if (this.field == null) {
+            return this;
+        }
+        if (!predicate.test(this.field)) {
+            throw new ValidationException("must satisfies the condition that user set");
+        }
+        return this;
     }
 
     public CollectionValidator<E, C, V> notEmpty() {

@@ -167,4 +167,20 @@ class NumberListValidatorTest {
                     .forEach(e -> e.greaterThan(2))
             );
     }
+
+    @DisplayName("forEach: 리스트의 모든 요소가 조건을 만족한다면 아무 일도 일어나지 않는다.")
+    @Test
+    void forEach_whenSatisfy() {
+        // given
+        List<Integer> list = List.of(1, 2, 3);
+
+        // when & then
+        assertDoesNotThrow(
+            () -> Validator.validateNumbers(list)
+                .forEach(e -> e
+                    .notNull()
+                    .lessThan(10)
+                )
+        );
+    }
 }

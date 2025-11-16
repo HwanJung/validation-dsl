@@ -3,10 +3,31 @@ package me.hwanjung.validation.validator.value;
 import me.hwanjung.validation.validator.BaseValidator;
 import me.hwanjung.validation.exception.ValidationException;
 
+import java.util.function.Predicate;
+
 public class StringValidator extends BaseValidator<String> {
 
     public StringValidator(String field) {
         super(field);
+    }
+
+    @Override
+    public StringValidator notNull() {
+        if (this.field == null) {
+            throw new ValidationException("must not be NULL");
+        }
+        return this;
+    }
+
+    @Override
+    public StringValidator satisfies(Predicate<String> predicate) {
+        if (this.field == null) {
+            return this;
+        }
+        if (!predicate.test(this.field)) {
+            throw new ValidationException("must satisfies the condition that user set");
+        }
+        return this;
     }
 
     public StringValidator notBlank() {
