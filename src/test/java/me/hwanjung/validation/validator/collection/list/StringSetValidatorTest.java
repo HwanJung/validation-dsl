@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class StringListValidatorTest {
+public class StringSetValidatorTest {
 
     @DisplayName("notEmpty: 리스트가 null이거나 비어있다면 예외가 발생한다.")
     @Test

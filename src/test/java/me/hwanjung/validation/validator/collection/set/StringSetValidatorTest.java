@@ -11,21 +11,21 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class NumberSetValidatorTest {
+public class StringSetValidatorTest {
 
     @DisplayName("notEmpty: Set이 null이거나 비어있다면 예외가 발생한다.")
     @Test
     void notEmpty_whenSetIsEmpty() {
         // given
-        Set<Integer> set1 = null;
-        Set<Integer> set2 = new HashSet<>();
+        Set<String> set1 = null;
+        Set<String> set2 = new HashSet<>();
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(set1).notEmpty()
+            () -> Validator.validateStrings(set1).notEmpty()
         );
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(set2).notEmpty()
+            () -> Validator.validateStrings(set2).notEmpty()
         );
     }
 
@@ -33,11 +33,11 @@ public class NumberSetValidatorTest {
     @Test
     void notEmpty_whenSetIsNotEmpty() {
         // given
-        Set<Integer> set = Set.of(1, 2, 3);
+        Set<String> set = Set.of("a", "b", "c");
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set).notEmpty()
+            () -> Validator.validateStrings(set).notEmpty()
         );
     }
 
@@ -45,12 +45,12 @@ public class NumberSetValidatorTest {
     @Test
     void sizeAtLeast_whenSetIsNull() {
         // given
-        Set<Integer> set = null;
+        Set<String> set = null;
         int min = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set).sizeAtLeast(min)
+            () -> Validator.validateStrings(set).sizeAtLeast(min)
         );
     }
 
@@ -58,29 +58,29 @@ public class NumberSetValidatorTest {
     @Test
     void sizeAtLeast_whenSetSizeLessThanMin() {
         // given
-        Set<Integer> set = Set.of(1, 2, 3);
+        Set<String> set = Set.of("a", "b", "hello");
         int min = 5;
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(set).sizeAtLeast(min)
+            () -> Validator.validateStrings(set).sizeAtLeast(min)
         );
     }
 
-    @DisplayName("sizeAtLeast: Set의 크기가 min보다 크거나 같다면 아무 일도 발생하지 않는다.")
+    @DisplayName("sizeAtLeast: Set의 크기가 min보다 같거나 크다면 아무 일도 발생하지 않는다.")
     @Test
     void sizeAtLeast_whenSatisfy() {
         // given
-        Set<Integer> set1 = Set.of(1, 2, 3);
-        Set<Integer> set2 = Set.of(1, 2, 3, 4);
+        Set<String> set1 = Set.of("a", "b", "hello");
+        Set<String> set2 = Set.of("a", "b", "c", "d");
         int min = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set1).sizeAtLeast(min)
+            () -> Validator.validateStrings(set1).sizeAtLeast(min)
         );
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set2).sizeAtLeast(min)
+            () -> Validator.validateStrings(set2).sizeAtLeast(min)
         );
     }
 
@@ -88,12 +88,12 @@ public class NumberSetValidatorTest {
     @Test
     void sizeAtMost_whenSetIsNull() {
         // given
-        Set<Integer> set = null;
+        Set<String> set = null;
         int max = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set).sizeAtMost(max)
+            () -> Validator.validateStrings(set).sizeAtMost(max)
         );
     }
 
@@ -101,29 +101,29 @@ public class NumberSetValidatorTest {
     @Test
     void sizeAtMost_whenSetSizeGreaterThanMax() {
         // given
-        Set<Integer> set = Set.of(1, 2, 3, 4);
+        Set<String> set = Set.of("a", "b", "hello", "c");
         int max = 3;
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(set).sizeAtMost(max)
+            () -> Validator.validateStrings(set).sizeAtMost(max)
         );
     }
 
-    @DisplayName("sizeAtMost: Set이 max보다 작거나 같다면 아무 일도 일어나지 않는다.")
+    @DisplayName("sizeAtMost: Set이 max보다 같거나 작다면 아무 일도 발생하지 않는다.")
     @Test
     void sizeAtMost_whenSetSizeLessThanMax() {
         // given
-        Set<Integer> set1 = Set.of(1, 2, 3);
-        Set<Integer> set2 = Set.of(1, 2);
+        Set<String> set1 = Set.of("a", "b");
+        Set<String> set2 = Set.of("a", "b", "c");
         int max = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set1).sizeAtMost(max)
+            () -> Validator.validateStrings(set1).sizeAtMost(max)
         );
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set2).sizeAtMost(max)
+            () -> Validator.validateStrings(set2).sizeAtMost(max)
         );
     }
 
@@ -131,11 +131,11 @@ public class NumberSetValidatorTest {
     @Test
     void size_whenSetIsNull() {
         // given
-        Set<Integer> set = null;
+        Set<String> set = null;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set).size(1)
+            () -> Validator.validateStrings(set).size(1)
         );
     }
 
@@ -143,12 +143,12 @@ public class NumberSetValidatorTest {
     @Test
     void size_whenSetSizeNotEqualsSize() {
         // given
-        Set<Integer> set = Set.of(1, 2, 3);
+        Set<String> set = Set.of("a", "b", "hello");
         int size = 4;
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(set).size(size)
+            () -> Validator.validateStrings(set).size(size)
         );
     }
 
@@ -156,12 +156,12 @@ public class NumberSetValidatorTest {
     @Test
     void size_whenSetSizeEqualsSize() {
         // given
-        Set<Integer> set = Set.of(1, 2, 3);
+        Set<String> set = Set.of("a", "b", "hello");
         int size = 3;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set).size(size)
+            () -> Validator.validateStrings(set).size(size)
         );
     }
 
@@ -169,11 +169,11 @@ public class NumberSetValidatorTest {
     @Test
     void forEach_whenSetIsNull() {
         // given
-        Set<Integer> set = null;
+        Set<String> set = null;
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set).forEach(null)
+            () -> Validator.validateStrings(set).forEach(null)
         );
     }
 
@@ -181,12 +181,14 @@ public class NumberSetValidatorTest {
     @Test
     void forEach_whenNotSatisfy() {
         // given
-        Set<Integer> set = Set.of(1, 2, 3);
+        Set<String> set = Set.of("a", "b", "c");
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validateNumbers(set)
-                .forEach(e -> e.greaterThan(2))
+            () -> Validator.validateStrings(set)
+                .forEach(e -> e
+                    .notNull()
+                    .minLength(2))
         );
     }
 
@@ -194,15 +196,14 @@ public class NumberSetValidatorTest {
     @Test
     void forEach_whenSatisfy() {
         // given
-        Set<Integer> set = Set.of(1, 2, 3);
+        Set<String> set = Set.of("a", "b", "c");
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validateNumbers(set)
+            () -> Validator.validateStrings(set)
                 .forEach(e -> e
                     .notNull()
-                    .lessThan(10)
-                )
+                    .minLength(1))
         );
     }
 }
