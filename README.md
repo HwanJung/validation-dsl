@@ -1,4 +1,5 @@
 # Validation DSL
+본 프로젝트는 Java 환경에서 사용할 수 있는 도메인 특화 검증 DSL(Domain-Specific Language) 라이브러리를 제공한다.
 
 ## 사용 방법
 
